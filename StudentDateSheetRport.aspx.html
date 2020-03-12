@@ -1,0 +1,536 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0067)http://exam.ignou.ac.in/termenddatesheet/StudentDateSheetRport.aspx -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>
+
+</title><link rel="stylesheet" href="./StudentDateSheetRport.aspx_files/bootstrap.min.css">
+<script src="./StudentDateSheetRport.aspx_files/jquery-3.4.1.min.js.download"></script>
+<script src="./StudentDateSheetRport.aspx_files/bootstrap.min.js.download"></script>
+  
+    </head>
+<body>
+
+<style>
+    
+    .modal-lg {
+    max-width: 90% !important;
+}
+
+
+</style>
+<script>
+    $("#btnClose").click(function (e) {
+        HideDialog();
+        e.preventDefault();
+        sessionStorage["PopupShown"] = 'yes'; //Save in the sessionStorage if the modal has been shown
+    });
+</script>
+
+<style type="text/css">
+.gridview {
+        font-family:"arial";
+        background-color:#FFFFFF;
+        width: 75%;
+        font-size: small;
+}
+.gridview th {
+        background: #7AC142;
+        padding: 5px;
+        font-size:medium;
+
+}
+.gridview th a{
+        color: #003300;
+        text-decoration: none;
+}
+.gridview th a:hover{
+        color: #003300;
+        text-decoration: underline;
+}
+.gridview td  {
+        background: #D9EDC9;
+        color: #333333;
+        font: medium "arial";
+        padding: 4px;
+}
+.gridview tr.even td {
+        background: #FFFFFF;
+}
+.gridview td a{
+        color: #003300;
+        font: bold small "arial";
+        padding: 2px;
+        text-decoration: none;
+}
+.gridview td a:hover {
+        color: red;
+        font-weight: bold;
+        text-decoration:underline;
+}
+
+</style>
+
+
+<script>
+
+    $(document).ready(function () {
+        var isshow = sessionStorage.getItem('isshow');
+        if (isshow == null) {
+            sessionStorage.setItem('isshow', 1);
+            // Show popup here
+            $('#myModal').modal('show');
+        }
+    });
+   /* 
+$(document).ready(function(){
+    $("#myModal").modal('show');
+    });*/
+    </script>
+
+
+    <form method="post" action="http://exam.ignou.ac.in/termenddatesheet/StudentDateSheetRport.aspx" id="form1">
+<div class="aspNetHidden">
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="">
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="">
+<input type="hidden" name="__LASTFOCUS" id="__LASTFOCUS" value="">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUJNDA3NTYyNjcxD2QWAgIDD2QWBgIBDxAPFgYeDURhdGFUZXh0RmllbGQFB1BST0dSQU0eDkRhdGFWYWx1ZUZpZWxkBQdQUk9HUkFNHgtfIURhdGFCb3VuZGdkEBXlARQtLS1TZWxlY3QgUHJvZ3JhbS0tLQVBQ0lTRQVBQ1BETQRBU1NPAkJBA0JBRwVCQVZUTQVCQkFSTAVCQkFTTQNCQ0EEQkNPTQZCQ09NQUYHQkNPTUNBQQdCQ09NRkNBBUJDT01HA0JFRANCSE0EQkxJUwZCUENDSE4DQlBQA0JTQwRCU0NHBEJTQ04DQlNXA0JUUwRDQUZFBENBSFQDQ0FMA0NCUwZDQ0lUU0sFQ0NMQkwDQ0NQBENDUEQDQ0NSA0NETQNDRVMEQ0VUTQVDRkFJRARDRkRFA0NGRQNDRkwDQ0ZOA0NGTwRDR0NBBENHREEDQ0dMBUNIQkhDBUNIQ1dNBENISEEDQ0hPA0NIUgNDSUIDQ0lHBENJSEwDQ0lTA0NJVANDSkwEQ0tMQwRDTElTBENMVEEFQ01DSE4EQ05DQwRDTklOA0NOTQNDT0YFQ1BBQk4FQ1BBSE0FQ1BBS00GQ1BBVEhBBENQRUwDQ1BGBENQSEEEQ1BMVARDUFZFA0NQWQNDUkQEQ1JVTARDU0xDBkNTV0NKUwNDVEUEQ1RQTQVDVFJCUwNDVFMDQ1VMBENWQUEEQ1ZBUARDV0hNBERBRkUDREFRBkRCUE9GQQREQ0NOA0RDRQNERFQEREVDRQVERUxFRAVERVZNVARERlBUBERJUFADRElSA0RNVANETkEERE5IRQVEUExBRAZEUFZDUE8DRFRHA0RUUwNEVUwGRFZBUEZWBERXRUQDRFdNBE1BQUUETUFBTgRNQURFBU1BRFZTBU1BRURTBU1BRURVBE1BR0QDTUFIBU1BSk1DBE1BUEMETUFQWQRNQVJEBE1BVFMFTUFXR1MGTUJBSUhNA01DQQRNQ09NCE1DT01CUENHBk1DT01GVAhNQ09NTUFGUwNNRUMDTUVEA01FRwRNR1BTA01IQQNNSEQETUxJUwJNUANNUEEDTVBCCU1QSElMQ0hFTQhNUEhJTENPTQlNUEhJTEdFT0cITVBISUxISU4HTVBISUxTVwNNUFMGTVNDQ0ZUB01TQ0RGU00HTVNDTUFDUwNNU08DTVNXBE1TV0MDTVRNBE1UVE0GUEdDQUNQBVBHQ0FFBVBHQ0FQBlBHQ0JIVAVQR0NDQwVQR0NDTAZQR0NFRFMFUEdDR0kGUEdDR1BTCVBHQ0lBVElWSQZQR0NNRE0GUEdDTUhUBVBHQ1BQBVBHREFDBVBHREFFBlBHREFQUAZQR0RBU1QFUEdEQlAGUEdEQ0ZUBVBHRENKB1BHRENPVU4FUEdERE0GUEdERFZTBlBHREVEUwZQR0RFTUEGUEdERU9IBlBHREVTRAVQR0RFVAZQR0RGQ1MFUEdERk0GUEdERk1QB1BHREZTUU0FUEdER00GUEdER1BTBVBHREhFBlBHREhITQdQR0RISVZNBVBHREhPBlBHREhSTQZQR0RJQk8GUEdESVBSBVBHRElTBlBHRExBTgZQR0RNQ0gFUEdETUgFUEdETU0FUEdET00FUEdEUE0HUEdEUFBFRAZQR0RQU00FUEdEUkQGUEdEU0xNBVBHRFNTBlBHRFNXVARQR0RUB1BHRFVQREwGUEdEV0dTBVBHSk1DBVBIREJDB1BIRENIRU0GUEhEQ09NBlBIREVORwVQSERFUwVQSERFVgZQSERHRFMHUEhER0VPRwZQSERISU4GUEhESk1DB1BIRE1HTVQFUEhETlMFUEhEUEgGUEhEUFZBBVBIRFJEBVBIRFNXBVBIRFdTFeUBATAFQUNJU0UFQUNQRE0EQVNTTwJCQQNCQUcFQkFWVE0FQkJBUkwFQkJBU00DQkNBBEJDT00GQkNPTUFGB0JDT01DQUEHQkNPTUZDQQVCQ09NRwNCRUQDQkhNBEJMSVMGQlBDQ0hOA0JQUANCU0MEQlNDRwRCU0NOA0JTVwNCVFMEQ0FGRQRDQUhUA0NBTANDQlMGQ0NJVFNLBUNDTEJMA0NDUARDQ1BEA0NDUgNDRE0DQ0VTBENFVE0FQ0ZBSUQEQ0ZERQNDRkUDQ0ZMA0NGTgNDRk8EQ0dDQQRDR0RBA0NHTAVDSEJIQwVDSENXTQRDSEhBA0NITwNDSFIDQ0lCA0NJRwRDSUhMA0NJUwNDSVQDQ0pMBENLTEMEQ0xJUwRDTFRBBUNNQ0hOBENOQ0MEQ05JTgNDTk0DQ09GBUNQQUJOBUNQQUhNBUNQQUtNBkNQQVRIQQRDUEVMA0NQRgRDUEhBBENQTFQEQ1BWRQNDUFkDQ1JEBENSVUwEQ1NMQwZDU1dDSlMDQ1RFBENUUE0FQ1RSQlMDQ1RTA0NVTARDVkFBBENWQVAEQ1dITQREQUZFA0RBUQZEQlBPRkEERENDTgNEQ0UDRERUBERFQ0UFREVMRUQFREVWTVQEREZQVARESVBQA0RJUgNETVQDRE5BBEROSEUFRFBMQUQGRFBWQ1BPA0RURwNEVFMDRFVMBkRWQVBGVgREV0VEA0RXTQRNQUFFBE1BQU4ETUFERQVNQURWUwVNQUVEUwVNQUVEVQRNQUdEA01BSAVNQUpNQwRNQVBDBE1BUFkETUFSRARNQVRTBU1BV0dTBk1CQUlITQNNQ0EETUNPTQhNQ09NQlBDRwZNQ09NRlQITUNPTU1BRlMDTUVDA01FRANNRUcETUdQUwNNSEEDTUhEBE1MSVMCTVADTVBBA01QQglNUEhJTENIRU0ITVBISUxDT00JTVBISUxHRU9HCE1QSElMSElOB01QSElMU1cDTVBTBk1TQ0NGVAdNU0NERlNNB01TQ01BQ1MDTVNPA01TVwRNU1dDA01UTQRNVFRNBlBHQ0FDUAVQR0NBRQVQR0NBUAZQR0NCSFQFUEdDQ0MFUEdDQ0wGUEdDRURTBVBHQ0dJBlBHQ0dQUwlQR0NJQVRJVkkGUEdDTURNBlBHQ01IVAVQR0NQUAVQR0RBQwVQR0RBRQZQR0RBUFAGUEdEQVNUBVBHREJQBlBHRENGVAVQR0RDSgdQR0RDT1VOBVBHRERNBlBHRERWUwZQR0RFRFMGUEdERU1BBlBHREVPSAZQR0RFU0QFUEdERVQGUEdERkNTBVBHREZNBlBHREZNUAdQR0RGU1FNBVBHREdNBlBHREdQUwVQR0RIRQZQR0RISE0HUEdESElWTQVQR0RITwZQR0RIUk0GUEdESUJPBlBHRElQUgVQR0RJUwZQR0RMQU4GUEdETUNIBVBHRE1IBVBHRE1NBVBHRE9NBVBHRFBNB1BHRFBQRUQGUEdEUFNNBVBHRFJEBlBHRFNMTQVQR0RTUwZQR0RTV1QEUEdEVAdQR0RVUERMBlBHRFdHUwVQR0pNQwVQSERCQwdQSERDSEVNBlBIRENPTQZQSERFTkcFUEhERVMFUEhERVYGUEhER0RTB1BIREdFT0cGUEhESElOBlBIREpNQwdQSERNR01UBVBIRE5TBVBIRFBIBlBIRFBWQQVQSERSRAVQSERTVwVQSERXUxQrA+UBZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZxYBAhVkAgIPEA8WBh8ABQZDT1VSU0UfAQUGQ09VUlNFHwJnZBAVEhMtLS1TZWxlY3QgQ291cnNlLS0tCEJHWUNUMTMxCEJDSENUMTMxCEJFR0FFMTgyCEJHWUNUMTMzCEJQSENUMTMxCEJFVkFFMTgxB0JNVEMxMzEIQkNIQ1QxMzMIQkhEQUUxODIIQlBIQ1QxMzMIQkJZQ1QxMzEIQkJZQ1QxMzMIQkdHQ1QxMzIIQlpZQ1QxMzEIQlpZQ1QxMzMIQkdHQ1QxMzEHQk1UQzEzMhUSATAIQkdZQ1QxMzEIQkNIQ1QxMzEIQkVHQUUxODIIQkdZQ1QxMzMIQlBIQ1QxMzEIQkVWQUUxODEHQk1UQzEzMQhCQ0hDVDEzMwhCSERBRTE4MghCUEhDVDEzMwhCQllDVDEzMQhCQllDVDEzMwhCR0dDVDEzMghCWllDVDEzMQhCWllDVDEzMwhCR0dDVDEzMQdCTVRDMTMyFCsDEmdnZ2dnZ2dnZ2dnZ2dnZ2dnZxYBZmQCBA88KwARAgAPFgQfAmceC18hSXRlbUNvdW50AhFkDBQrAAQWCB4ETmFtZQUHUFJPR1JBTR4KSXNSZWFkT25seWgeBFR5cGUZKwIeCURhdGFGaWVsZAUHUFJPR1JBTRYIHwQFBkNPVVJTRR8FaB8GGSsCHwcFBkNPVVJTRRYIHwQFCEVYQU1EQVRFHwVoHwYZKwIfBwUIRVhBTURBVEUWCB8EBQRTU1NOHwVoHwYZKwIfBwUEU1NTThYCZg9kFiQCAQ9kFghmDw8WAh4EVGV4dAUEQlNDR2RkAgEPDxYCHwgFCEJFVkFFMTgxZGQCAg8PFgIfCAUKMDMvMDYvMjAyMGRkAgMPDxYCHwgFB0VWRU5JTkdkZAICD2QWCGYPDxYCHwgFBEJTQ0dkZAIBDw8WAh8IBQhCSERBRTE4MmRkAgIPDxYCHwgFCjA1LzA2LzIwMjBkZAIDDw8WAh8IBQdFVkVOSU5HZGQCAw9kFghmDw8WAh8IBQRCU0NHZGQCAQ8PFgIfCAUIQkVHQUUxODJkZAICDw8WAh8IBQowNS8wNi8yMDIwZGQCAw8PFgIfCAUHRVZFTklOR2RkAgQPZBYIZg8PFgIfCAUEQlNDR2RkAgEPDxYCHwgFCEJHR0NUMTMxZGQCAg8PFgIfCAUKMDYvMDYvMjAyMGRkAgMPDxYCHwgFB0VWRU5JTkdkZAIFD2QWCGYPDxYCHwgFBEJTQ0dkZAIBDw8WAh8IBQdCTVRDMTMxZGQCAg8PFgIfCAUKMDgvMDYvMjAyMGRkAgMPDxYCHwgFB01PUk5JTkdkZAIGD2QWCGYPDxYCHwgFBEJTQ0dkZAIBDw8WAh8IBQdCTVRDMTMyZGQCAg8PFgIfCAUKMDkvMDYvMjAyMGRkAgMPDxYCHwgFB01PUk5JTkdkZAIHD2QWCGYPDxYCHwgFBEJTQ0dkZAIBDw8WAh8IBQhCR1lDVDEzMWRkAgIPDxYCHwgFCjEzLzA2LzIwMjBkZAIDDw8WAh8IBQdNT1JOSU5HZGQCCA9kFghmDw8WAh8IBQRCU0NHZGQCAQ8PFgIfCAUIQkJZQ1QxMzFkZAICDw8WAh8IBQoxNS8wNi8yMDIwZGQCAw8PFgIfCAUHRVZFTklOR2RkAgkPZBYIZg8PFgIfCAUEQlNDR2RkAgEPDxYCHwgFCEJQSENUMTMxZGQCAg8PFgIfCAUKMTYvMDYvMjAyMGRkAgMPDxYCHwgFB0VWRU5JTkdkZAIKD2QWCGYPDxYCHwgFBEJTQ0dkZAIBDw8WAh8IBQhCQ0hDVDEzM2RkAgIPDxYCHwgFCjE3LzA2LzIwMjBkZAIDDw8WAh8IBQdNT1JOSU5HZGQCCw9kFghmDw8WAh8IBQRCU0NHZGQCAQ8PFgIfCAUIQlBIQ1QxMzNkZAICDw8WAh8IBQoxOC8wNi8yMDIwZGQCAw8PFgIfCAUHRVZFTklOR2RkAgwPZBYIZg8PFgIfCAUEQlNDR2RkAgEPDxYCHwgFCEJaWUNUMTMxZGQCAg8PFgIfCAUKMTkvMDYvMjAyMGRkAgMPDxYCHwgFB01PUk5JTkdkZAIND2QWCGYPDxYCHwgFBEJTQ0dkZAIBDw8WAh8IBQhCR0dDVDEzMmRkAgIPDxYCHwgFCjIwLzA2LzIwMjBkZAIDDw8WAh8IBQdNT1JOSU5HZGQCDg9kFghmDw8WAh8IBQRCU0NHZGQCAQ8PFgIfCAUIQlpZQ1QxMzNkZAICDw8WAh8IBQoyMy8wNi8yMDIwZGQCAw8PFgIfCAUHTU9STklOR2RkAg8PZBYIZg8PFgIfCAUEQlNDR2RkAgEPDxYCHwgFCEJCWUNUMTMzZGQCAg8PFgIfCAUKMjUvMDYvMjAyMGRkAgMPDxYCHwgFB0VWRU5JTkdkZAIQD2QWCGYPDxYCHwgFBEJTQ0dkZAIBDw8WAh8IBQhCQ0hDVDEzMWRkAgIPDxYCHwgFCjI2LzA2LzIwMjBkZAIDDw8WAh8IBQdNT1JOSU5HZGQCEQ9kFghmDw8WAh8IBQRCU0NHZGQCAQ8PFgIfCAUIQkdZQ1QxMzNkZAICDw8WAh8IBQoyNy8wNi8yMDIwZGQCAw8PFgIfCAUHRVZFTklOR2RkAhIPDxYCHgdWaXNpYmxlaGRkGAEFCUdyaWRWaWV3MQ88KwAMAQgCAWTdz4GN9c0Q3SPis14sRvudR7eEdy8fZuTnR5+A5LPQrA==">
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['form1'];
+if (!theForm) {
+    theForm = document.form1;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
+<div class="aspNetHidden">
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="87074A0A">
+	<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="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">
+</div>
+    <div>
+    	<div class="col-lg-4 col-md-12 mb-lg-0 mb-4">
+
+      <!-- Rotating card -->
+      <div class="card-wrapper">
+        <div id="card-1" class="card card-rotating text-center">
+          <!-- Front Side -->
+          <div class="face front">
+            <!-- Image -->
+            <!-- Avatar -->
+            <div class="avatar mx-auto white">
+              <img src="https://github.com/satyamdigital/satyamdigital/blob/master/New%20folder/shiva.jpg?raw=true" class="rounded-circle img-fluid" alt="First sample avatar image">
+            </div>
+            <!-- Content -->
+          </div>
+          <!-- Front Side -->
+          <!-- Back Side -->
+          <!-- Back Side -->
+        </div>
+      </div>
+      <!-- Rotating card -->
+
+    </div>
+    	<p>Any other help and queries visit this website is also created by shivam kumar singh for all ignou students</p>
+    	<a href="www.youthpoliticalparty.com">
+    		Satyam Digital Online Seva
+    	</a>
+    </div>
+    
+    <div align="center">
+        <img src="./StudentDateSheetRport.aspx_files/top.gif"></div>
+    <div>
+        
+        <div align="center" style="font-size: x-large; font-weight: bold; color: #0000FF;">
+            (TENTATIVE DATE-SHEET FOR JUNE -2020 TEE)
+        
+        
+        <table>
+   
+    <tbody><tr><td align="center" colspan="6"><h6>SELECT 
+        ANY ONE OPTION FROM BELOW </h6></td></tr>
+        <tr>
+            <td>SELECT PROGRAM: </td>
+            <td>
+            <select name="ddprogram" onchange="javascript:setTimeout(&#39;__doPostBack(\&#39;ddprogram\&#39;,\&#39;\&#39;)&#39;, 0)" id="ddprogram" class="form-control">
+	<option value="0">---Select Program---</option>
+	<option value="ACISE">ACISE</option>
+	<option value="ACPDM">ACPDM</option>
+	<option value="ASSO">ASSO</option>
+	<option value="BA">BA</option>
+	<option value="BAG">BAG</option>
+	<option value="BAVTM">BAVTM</option>
+	<option value="BBARL">BBARL</option>
+	<option value="BBASM">BBASM</option>
+	<option value="BCA">BCA</option>
+	<option value="BCOM">BCOM</option>
+	<option value="BCOMAF">BCOMAF</option>
+	<option value="BCOMCAA">BCOMCAA</option>
+	<option value="BCOMFCA">BCOMFCA</option>
+	<option value="BCOMG">BCOMG</option>
+	<option value="BED">BED</option>
+	<option value="BHM">BHM</option>
+	<option value="BLIS">BLIS</option>
+	<option value="BPCCHN">BPCCHN</option>
+	<option value="BPP">BPP</option>
+	<option value="BSC">BSC</option>
+	<option selected="selected" value="BSCG">BSCG</option>
+	<option value="BSCN">BSCN</option>
+	<option value="BSW">BSW</option>
+	<option value="BTS">BTS</option>
+	<option value="CAFE">CAFE</option>
+	<option value="CAHT">CAHT</option>
+	<option value="CAL">CAL</option>
+	<option value="CBS">CBS</option>
+	<option value="CCITSK">CCITSK</option>
+	<option value="CCLBL">CCLBL</option>
+	<option value="CCP">CCP</option>
+	<option value="CCPD">CCPD</option>
+	<option value="CCR">CCR</option>
+	<option value="CDM">CDM</option>
+	<option value="CES">CES</option>
+	<option value="CETM">CETM</option>
+	<option value="CFAID">CFAID</option>
+	<option value="CFDE">CFDE</option>
+	<option value="CFE">CFE</option>
+	<option value="CFL">CFL</option>
+	<option value="CFN">CFN</option>
+	<option value="CFO">CFO</option>
+	<option value="CGCA">CGCA</option>
+	<option value="CGDA">CGDA</option>
+	<option value="CGL">CGL</option>
+	<option value="CHBHC">CHBHC</option>
+	<option value="CHCWM">CHCWM</option>
+	<option value="CHHA">CHHA</option>
+	<option value="CHO">CHO</option>
+	<option value="CHR">CHR</option>
+	<option value="CIB">CIB</option>
+	<option value="CIG">CIG</option>
+	<option value="CIHL">CIHL</option>
+	<option value="CIS">CIS</option>
+	<option value="CIT">CIT</option>
+	<option value="CJL">CJL</option>
+	<option value="CKLC">CKLC</option>
+	<option value="CLIS">CLIS</option>
+	<option value="CLTA">CLTA</option>
+	<option value="CMCHN">CMCHN</option>
+	<option value="CNCC">CNCC</option>
+	<option value="CNIN">CNIN</option>
+	<option value="CNM">CNM</option>
+	<option value="COF">COF</option>
+	<option value="CPABN">CPABN</option>
+	<option value="CPAHM">CPAHM</option>
+	<option value="CPAKM">CPAKM</option>
+	<option value="CPATHA">CPATHA</option>
+	<option value="CPEL">CPEL</option>
+	<option value="CPF">CPF</option>
+	<option value="CPHA">CPHA</option>
+	<option value="CPLT">CPLT</option>
+	<option value="CPVE">CPVE</option>
+	<option value="CPY">CPY</option>
+	<option value="CRD">CRD</option>
+	<option value="CRUL">CRUL</option>
+	<option value="CSLC">CSLC</option>
+	<option value="CSWCJS">CSWCJS</option>
+	<option value="CTE">CTE</option>
+	<option value="CTPM">CTPM</option>
+	<option value="CTRBS">CTRBS</option>
+	<option value="CTS">CTS</option>
+	<option value="CUL">CUL</option>
+	<option value="CVAA">CVAA</option>
+	<option value="CVAP">CVAP</option>
+	<option value="CWHM">CWHM</option>
+	<option value="DAFE">DAFE</option>
+	<option value="DAQ">DAQ</option>
+	<option value="DBPOFA">DBPOFA</option>
+	<option value="DCCN">DCCN</option>
+	<option value="DCE">DCE</option>
+	<option value="DDT">DDT</option>
+	<option value="DECE">DECE</option>
+	<option value="DELED">DELED</option>
+	<option value="DEVMT">DEVMT</option>
+	<option value="DFPT">DFPT</option>
+	<option value="DIPP">DIPP</option>
+	<option value="DIR">DIR</option>
+	<option value="DMT">DMT</option>
+	<option value="DNA">DNA</option>
+	<option value="DNHE">DNHE</option>
+	<option value="DPLAD">DPLAD</option>
+	<option value="DPVCPO">DPVCPO</option>
+	<option value="DTG">DTG</option>
+	<option value="DTS">DTS</option>
+	<option value="DUL">DUL</option>
+	<option value="DVAPFV">DVAPFV</option>
+	<option value="DWED">DWED</option>
+	<option value="DWM">DWM</option>
+	<option value="MAAE">MAAE</option>
+	<option value="MAAN">MAAN</option>
+	<option value="MADE">MADE</option>
+	<option value="MADVS">MADVS</option>
+	<option value="MAEDS">MAEDS</option>
+	<option value="MAEDU">MAEDU</option>
+	<option value="MAGD">MAGD</option>
+	<option value="MAH">MAH</option>
+	<option value="MAJMC">MAJMC</option>
+	<option value="MAPC">MAPC</option>
+	<option value="MAPY">MAPY</option>
+	<option value="MARD">MARD</option>
+	<option value="MATS">MATS</option>
+	<option value="MAWGS">MAWGS</option>
+	<option value="MBAIHM">MBAIHM</option>
+	<option value="MCA">MCA</option>
+	<option value="MCOM">MCOM</option>
+	<option value="MCOMBPCG">MCOMBPCG</option>
+	<option value="MCOMFT">MCOMFT</option>
+	<option value="MCOMMAFS">MCOMMAFS</option>
+	<option value="MEC">MEC</option>
+	<option value="MED">MED</option>
+	<option value="MEG">MEG</option>
+	<option value="MGPS">MGPS</option>
+	<option value="MHA">MHA</option>
+	<option value="MHD">MHD</option>
+	<option value="MLIS">MLIS</option>
+	<option value="MP">MP</option>
+	<option value="MPA">MPA</option>
+	<option value="MPB">MPB</option>
+	<option value="MPHILCHEM">MPHILCHEM</option>
+	<option value="MPHILCOM">MPHILCOM</option>
+	<option value="MPHILGEOG">MPHILGEOG</option>
+	<option value="MPHILHIN">MPHILHIN</option>
+	<option value="MPHILSW">MPHILSW</option>
+	<option value="MPS">MPS</option>
+	<option value="MSCCFT">MSCCFT</option>
+	<option value="MSCDFSM">MSCDFSM</option>
+	<option value="MSCMACS">MSCMACS</option>
+	<option value="MSO">MSO</option>
+	<option value="MSW">MSW</option>
+	<option value="MSWC">MSWC</option>
+	<option value="MTM">MTM</option>
+	<option value="MTTM">MTTM</option>
+	<option value="PGCACP">PGCACP</option>
+	<option value="PGCAE">PGCAE</option>
+	<option value="PGCAP">PGCAP</option>
+	<option value="PGCBHT">PGCBHT</option>
+	<option value="PGCCC">PGCCC</option>
+	<option value="PGCCL">PGCCL</option>
+	<option value="PGCEDS">PGCEDS</option>
+	<option value="PGCGI">PGCGI</option>
+	<option value="PGCGPS">PGCGPS</option>
+	<option value="PGCIATIVI">PGCIATIVI</option>
+	<option value="PGCMDM">PGCMDM</option>
+	<option value="PGCMHT">PGCMHT</option>
+	<option value="PGCPP">PGCPP</option>
+	<option value="PGDAC">PGDAC</option>
+	<option value="PGDAE">PGDAE</option>
+	<option value="PGDAPP">PGDAPP</option>
+	<option value="PGDAST">PGDAST</option>
+	<option value="PGDBP">PGDBP</option>
+	<option value="PGDCFT">PGDCFT</option>
+	<option value="PGDCJ">PGDCJ</option>
+	<option value="PGDCOUN">PGDCOUN</option>
+	<option value="PGDDM">PGDDM</option>
+	<option value="PGDDVS">PGDDVS</option>
+	<option value="PGDEDS">PGDEDS</option>
+	<option value="PGDEMA">PGDEMA</option>
+	<option value="PGDEOH">PGDEOH</option>
+	<option value="PGDESD">PGDESD</option>
+	<option value="PGDET">PGDET</option>
+	<option value="PGDFCS">PGDFCS</option>
+	<option value="PGDFM">PGDFM</option>
+	<option value="PGDFMP">PGDFMP</option>
+	<option value="PGDFSQM">PGDFSQM</option>
+	<option value="PGDGM">PGDGM</option>
+	<option value="PGDGPS">PGDGPS</option>
+	<option value="PGDHE">PGDHE</option>
+	<option value="PGDHHM">PGDHHM</option>
+	<option value="PGDHIVM">PGDHIVM</option>
+	<option value="PGDHO">PGDHO</option>
+	<option value="PGDHRM">PGDHRM</option>
+	<option value="PGDIBO">PGDIBO</option>
+	<option value="PGDIPR">PGDIPR</option>
+	<option value="PGDIS">PGDIS</option>
+	<option value="PGDLAN">PGDLAN</option>
+	<option value="PGDMCH">PGDMCH</option>
+	<option value="PGDMH">PGDMH</option>
+	<option value="PGDMM">PGDMM</option>
+	<option value="PGDOM">PGDOM</option>
+	<option value="PGDPM">PGDPM</option>
+	<option value="PGDPPED">PGDPPED</option>
+	<option value="PGDPSM">PGDPSM</option>
+	<option value="PGDRD">PGDRD</option>
+	<option value="PGDSLM">PGDSLM</option>
+	<option value="PGDSS">PGDSS</option>
+	<option value="PGDSWT">PGDSWT</option>
+	<option value="PGDT">PGDT</option>
+	<option value="PGDUPDL">PGDUPDL</option>
+	<option value="PGDWGS">PGDWGS</option>
+	<option value="PGJMC">PGJMC</option>
+	<option value="PHDBC">PHDBC</option>
+	<option value="PHDCHEM">PHDCHEM</option>
+	<option value="PHDCOM">PHDCOM</option>
+	<option value="PHDENG">PHDENG</option>
+	<option value="PHDES">PHDES</option>
+	<option value="PHDEV">PHDEV</option>
+	<option value="PHDGDS">PHDGDS</option>
+	<option value="PHDGEOG">PHDGEOG</option>
+	<option value="PHDHIN">PHDHIN</option>
+	<option value="PHDJMC">PHDJMC</option>
+	<option value="PHDMGMT">PHDMGMT</option>
+	<option value="PHDNS">PHDNS</option>
+	<option value="PHDPH">PHDPH</option>
+	<option value="PHDPVA">PHDPVA</option>
+	<option value="PHDRD">PHDRD</option>
+	<option value="PHDSW">PHDSW</option>
+	<option value="PHDWS">PHDWS</option>
+
+</select>
+        </td>
+
+        <td>SELECT COURSE: </td>
+            <td>
+            <select name="ddcourse" onchange="javascript:setTimeout(&#39;__doPostBack(\&#39;ddcourse\&#39;,\&#39;\&#39;)&#39;, 0)" id="ddcourse" class="form-control">
+	<option selected="selected" value="0">---Select Course---</option>
+	<option value="BGYCT131">BGYCT131</option>
+	<option value="BCHCT131">BCHCT131</option>
+	<option value="BEGAE182">BEGAE182</option>
+	<option value="BGYCT133">BGYCT133</option>
+	<option value="BPHCT131">BPHCT131</option>
+	<option value="BEVAE181">BEVAE181</option>
+	<option value="BMTC131">BMTC131</option>
+	<option value="BCHCT133">BCHCT133</option>
+	<option value="BHDAE182">BHDAE182</option>
+	<option value="BPHCT133">BPHCT133</option>
+	<option value="BBYCT131">BBYCT131</option>
+	<option value="BBYCT133">BBYCT133</option>
+	<option value="BGGCT132">BGGCT132</option>
+	<option value="BZYCT131">BZYCT131</option>
+	<option value="BZYCT133">BZYCT133</option>
+	<option value="BGGCT131">BGGCT131</option>
+	<option value="BMTC132">BMTC132</option>
+
+</select>
+        </td>
+        <td>
+            <input type="submit" name="btnReset" value="CLEAR ALL" id="btnReset" class="btn btn-primary" style="color:White;background-color:#0033CC;font-size:Medium;height:36px;width:120px;">
+        </td>
+        </tr>
+        </tbody></table>
+        </div>
+    </div>
+    
+    
+   
+    <div align="center">
+            <div>
+	<table class="gridview" cellspacing="0" rules="all" border="1" id="GridView1" style="border-collapse:collapse;">
+		<tbody><tr>
+			<th scope="col">PROGRAM</th><th scope="col">COURSE</th><th scope="col">EXAMDATE</th><th scope="col">SSSN</th>
+		</tr><tr>
+			<td>BSCG</td><td>BEVAE181</td><td>03/06/2020</td><td>EVENING</td>
+		</tr><tr class="even">
+			<td>BSCG</td><td>BHDAE182</td><td>05/06/2020</td><td>EVENING</td>
+		</tr><tr>
+			<td>BSCG</td><td>BEGAE182</td><td>05/06/2020</td><td>EVENING</td>
+		</tr><tr class="even">
+			<td>BSCG</td><td>BGGCT131</td><td>06/06/2020</td><td>EVENING</td>
+		</tr><tr>
+			<td>BSCG</td><td>BMTC131</td><td>08/06/2020</td><td>MORNING</td>
+		</tr><tr class="even">
+			<td>BSCG</td><td>BMTC132</td><td>09/06/2020</td><td>MORNING</td>
+		</tr><tr>
+			<td>BSCG</td><td>BGYCT131</td><td>13/06/2020</td><td>MORNING</td>
+		</tr><tr class="even">
+			<td>BSCG</td><td>BBYCT131</td><td>15/06/2020</td><td>EVENING</td>
+		</tr><tr>
+			<td>BSCG</td><td>BPHCT131</td><td>16/06/2020</td><td>EVENING</td>
+		</tr><tr class="even">
+			<td>BSCG</td><td>BCHCT133</td><td>17/06/2020</td><td>MORNING</td>
+		</tr><tr>
+			<td>BSCG</td><td>BPHCT133</td><td>18/06/2020</td><td>EVENING</td>
+		</tr><tr class="even">
+			<td>BSCG</td><td>BZYCT131</td><td>19/06/2020</td><td>MORNING</td>
+		</tr><tr>
+			<td>BSCG</td><td>BGGCT132</td><td>20/06/2020</td><td>MORNING</td>
+		</tr><tr class="even">
+			<td>BSCG</td><td>BZYCT133</td><td>23/06/2020</td><td>MORNING</td>
+		</tr><tr>
+			<td>BSCG</td><td>BBYCT133</td><td>25/06/2020</td><td>EVENING</td>
+		</tr><tr class="even">
+			<td>BSCG</td><td>BCHCT131</td><td>26/06/2020</td><td>MORNING</td>
+		</tr><tr>
+			<td>BSCG</td><td>BGYCT133</td><td>27/06/2020</td><td>EVENING</td>
+		</tr>
+	</tbody></table>
+</div>
+       
+    
+    </div>
+
+  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">View Instructions</button>
+
+
+   <div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-lg">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+      </div>
+      <div class="modal-body">
+        <p><b>Instructions to Students:</b></p>
+        Permission for appearing in the examination is provisional and is subject to the following conditions:-
+        <ol>
+<li>Your registration for these courses is valid and not time barred;
+</li><li>You have submitted the required number of assignments in the courses by due date wherever applicable;
+</li><li>You have completed the minimum time to pursue these courses as per the provision of your programme;
+</li><li>You have paid the examination fee for all the courses you are appearing in the examination;
+</li><li>In the case of non compliance of any of the above conditions, the result of all such courses will not be declared.
+</li></ol>
+
+<table width="100%" border="1">
+<tbody><tr>
+<td width="5%">#MIL	</td><td>BBHF/BMAF/BSKF/FAS/FBG/FEG-2/FGT/FKD/FML/FMT/FOR/FPB/FTG/FTM/FUD/</td>
+</tr>
+
+<tr>
+<td colspan="2"><ul>
+<li>AWR(E)-1/BEGA-102/AWR(H)-1/BRPA-101: AWR(ENGLISH MEDIUM)/AWR(HINDI MEDIUM)
+</li><li>AFW(E)-1/BEGA-001/AFW(H)-1/BHDA-101 : AFW(ENGLISH MEDIUM)/AFW (HINDI MEDIUM)
+
+<br>
+<u>DURATION OF EXAM</u>- DURATION OF EXAM OF EACH EXAM WILL BE AS MENTIONED ON THE QUESTION PAPER
+</li><li>GROUP FOR EXAMINATION ARE ON THE BASIS OF COURSE REGISTRATION OFFER
+</li></ul>
+
+</td></tr><tr><td>GR-1	</td><td>EHD-1/BGSE-001/BHDE-101/EHD-5/BEGE-101/EPS-11/EHI-1/EHI-7/BHIE-107/EEC-11/EPA-1/ESO-11/MTE-1*/BPY-001/ </td></tr>
+<tr><td>GR-2	</td><td>EHD-2/EHD-8/BHDE-108/BEGE-102/EPS-12/BPSE-212/EHI-2/BECE-002/BPAE-102/ESO-12/ERD-1/BRDE-101/MTE-2*/BPY-003/</td></tr>
+<tr><td>GR-3	</td><td>EHD-3/ /BEGE-103/BEGE-108/EHI-3/EEC-10/EEC-13/EPS-3/EPS-8/EPA-3/ESO-13/MTE-7*/BPY-005/</td></tr>
+<tr><td>GR-4	</td><td>EHD-06/BHDE-106/BEGE-105/EPS-7/EHI-4/EEC-14/BECE-214/EPA-4/BPAE-104/ESO-14/MTE-9*/BPY-006/</td></tr>
+<tr><td>GR-5	</td><td>/BHDE-107/EEG-6/BEGE-106/EPS-15/EHI-5/BECE-15/EPA-5/ESO-15/MTE-11*/BPY-009/BULE-005/</td></tr>
+<tr><td>GR-6	</td><td>EHD-4/EEG-4/BEGE-104/ /BEGE-107/EPS-6/EPS-9/BECE-016/EEC-7/BECE-107/EHI-6/EPA-6/ESO-16/MTE-13*/BPY-011/BULE-006/</td></tr>
+
+</tbody></table>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="btnClose" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+    </form>
+
+
+<iframe frameborder="0" scrolling="no" style="background-color: transparent; border: 0px; display: none;" src="./StudentDateSheetRport.aspx_files/saved_resource.html"></iframe><div id="GOOGLE_INPUT_CHEXT_FLAG" input="" input_stat="{&quot;tlang&quot;:true,&quot;tsbc&quot;:true,&quot;pun&quot;:true,&quot;mk&quot;:true,&quot;ss&quot;:true}" style="display: none;"></div></body></html>
